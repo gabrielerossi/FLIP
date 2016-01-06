@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPClientLibrary", "TCPClientLibrary\TCPClientLibrary.csproj", "{B8FE82EC-7848-43D9-8428-F852D3360052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPServerLibrary", "TCPServerLibrary\TCPServerLibrary.csproj", "{0EF58A24-84F3-4CA6-BF7D-90163826FA9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaLibrary", "AutomaLibrary\AutomaLibrary.csproj", "{3ADC9AD0-70D6-4925-B480-CB5B182F5EC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessaggioLibrary", "MessaggioLibrary\MessaggioLibrary.csproj", "{2D8C8481-815F-4998-82BD-61AF33F82D48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTcpClient", "AppTcpClient\AppTcpClient.csproj", "{6D62DF74-ABAA-40D4-8B88-A46BAB9210B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTcpServer", "AppTcpServer\AppTcpServer.csproj", "{3C86A6D7-B008-493C-8416-EADE622070FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8FE82EC-7848-43D9-8428-F852D3360052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8FE82EC-7848-43D9-8428-F852D3360052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8FE82EC-7848-43D9-8428-F852D3360052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8FE82EC-7848-43D9-8428-F852D3360052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF58A24-84F3-4CA6-BF7D-90163826FA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF58A24-84F3-4CA6-BF7D-90163826FA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF58A24-84F3-4CA6-BF7D-90163826FA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF58A24-84F3-4CA6-BF7D-90163826FA9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ADC9AD0-70D6-4925-B480-CB5B182F5EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ADC9AD0-70D6-4925-B480-CB5B182F5EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ADC9AD0-70D6-4925-B480-CB5B182F5EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ADC9AD0-70D6-4925-B480-CB5B182F5EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8C8481-815F-4998-82BD-61AF33F82D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8C8481-815F-4998-82BD-61AF33F82D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8C8481-815F-4998-82BD-61AF33F82D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8C8481-815F-4998-82BD-61AF33F82D48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D62DF74-ABAA-40D4-8B88-A46BAB9210B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D62DF74-ABAA-40D4-8B88-A46BAB9210B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D62DF74-ABAA-40D4-8B88-A46BAB9210B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D62DF74-ABAA-40D4-8B88-A46BAB9210B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C86A6D7-B008-493C-8416-EADE622070FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C86A6D7-B008-493C-8416-EADE622070FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C86A6D7-B008-493C-8416-EADE622070FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C86A6D7-B008-493C-8416-EADE622070FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
