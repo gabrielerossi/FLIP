@@ -13,9 +13,14 @@ namespace AppTcpClient
     {
         static void Main(string[] args)
         {
-            FriendShipTcpClient cli = new FriendShipTcpClient();
-            cli.Start();
+            StartClient();
             Console.ReadKey();
+        }
+
+        private static async void StartClient()
+        {
+            FriendShipTcpClient cli = new FriendShipTcpClient();
+            await Task.Factory.StartNew(cli.Start);
         }
     }
 }

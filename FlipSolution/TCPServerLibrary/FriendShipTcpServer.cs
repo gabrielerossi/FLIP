@@ -27,6 +27,7 @@ namespace TCPServerLibrary
                 Task.Factory.StartNew(Comunica, client);
             }
         }
+
         static void Comunica(object param)
         {
             TcpClient client = (TcpClient)param;
@@ -40,6 +41,50 @@ namespace TCPServerLibrary
 
             TipoStato stato = TipoStato.Nessuno;
 
+            IterazioneComunica(sr, sw, stato);
+        }
+
+        private static string SplitString(string str, ref TipoStato stato)
+        {
+            string[] strSplit = str.Split(' ');
+            stato = (TipoStato)Enum.Parse(typeof(TipoStato), strSplit[0], true);
+            string strMsg = "";
+            if (strSplit.Length == 3)
+            {
+                strMsg = strSplit[1] + ' ' + strSplit[2];
+            }
+            else
+            {
+                strMsg = strSplit[1];
+            }
+            return strMsg;
+        }
+
+        private static TipoStato CreateMsgIng(string strMsg, TipoStato stato, out Messaggio msg)
+        {
+            msg = MessaggioFactory.Create(strMsg);
+            TipoComando ingresso = (TipoComando)Enum.Parse(typeof(TipoComando), strMsg.Split(' ')[0], true);
+            Ingresso ing = IngressoFactory.Create(ingresso);
+            TipoStato statoSuccessivo = ing.CambiaStato(stato);
+            return statoSuccessivo;
+        }
+
+        private static void RispostaServer(Messaggio msg, TipoStato stato, TipoStato statoSuccessivo, StreamWriter sw)
+        {
+            if (msg != null && statoSuccessivo != stato)
+            {
+                Console.WriteLine(msg.GetType().ToString());
+                sw.WriteLine("{0} +OK", statoSuccessivo.ToString());
+            }
+            else
+            {
+                Console.WriteLine("Messaggio sconosciuto");
+                sw.WriteLine("{0} -ERR", stato.ToString());
+            }
+        }
+
+        private static void IterazioneComunica(StreamReader sr, StreamWriter sw, TipoStato stato)
+        {
             while (true)
             {
                 // lettura richiesta dal client
@@ -48,32 +93,17 @@ namespace TCPServerLibrary
                 // Elaborazione e invio risposta
                 try
                 {
-                    string[] strSplit = str.Split(' ');
-                    stato = (TipoStato)Enum.Parse(typeof(TipoStato), strSplit[0], true);
-                    string strMsg = "";
-                    if (strSplit.Length == 3)
-                    {
-                        strMsg = strSplit[1] + ' ' + strSplit[2];
-                    }
-                    else
-                    {
-                        strMsg = strSplit[1];
-                    }
-                    Messaggio msg = MessaggioFactory.Create(strMsg);
-                    TipoComando ingresso = (TipoComando)Enum.Parse(typeof(TipoComando), strSplit[1], true);
-                    Ingresso ing = IngressoFactory.Create(ingresso);
-                    TipoStato statoSuccessivo = ing.CambiaStato(stato);
-                    if (msg != null && statoSuccessivo != stato)
-                    {
-                        Console.WriteLine(msg.GetType().ToString());
-                        sw.WriteLine("{0} +OK", statoSuccessivo.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Messaggio sconosciuto");
-                        sw.WriteLine("{0} -ERR", stato.ToString());
-                    }
-                    if(statoSuccessivo == TipoStato.Q)
+                    //Divisione messaggio 
+                    string strMsg = SplitString(str, ref stato);
+
+                    //Creazione messaggio e ingresso e definizione stato
+                    Messaggio msg = null;
+                    TipoStato statoSuccessivo = CreateMsgIng(strMsg, stato, out msg);
+
+                    //Risposta dal server
+                    RispostaServer(msg, stato, statoSuccessivo, sw);
+
+                    if (statoSuccessivo == TipoStato.Q)
                     {
                         Console.WriteLine("Connessione chiusa");
                         break;
