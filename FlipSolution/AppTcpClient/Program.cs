@@ -20,7 +20,11 @@ namespace AppTcpClient
         private static async void StartClient()
         {
             FriendShipTcpClient cli = new FriendShipTcpClient();
-            await Task.Factory.StartNew(cli.Start);
+            //Task tsk = new Task(cli.Start);
+            //tsk.Start();
+            //tsk.Wait();
+            Task tsk = cli.Start();
+            await tsk;
         }
     }
 }
